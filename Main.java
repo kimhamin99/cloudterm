@@ -4,7 +4,6 @@ public class Main {
 
     public static void  main(String[] args) throws Exception {
 
-
         int menu_num;
         String instance_id;
         
@@ -31,15 +30,43 @@ public class Main {
             System.out.print("Put menu's number: ");
             
             menu_num=num.nextInt();
-                
+            
+            if(menu_num == 1) {
+            	//listInstances(); 
+            }
+            else if(menu_num == 2) {
+            	//listInstances(); 
+            }
+            else if(menu_num == 3) {
+            	
+            }
+            else if(menu_num == 4) {
+            	
+            }
+            else if(menu_num == 5) {
+            	
+            }
+            else if(menu_num == 6) {
+            	
+            }
+            else if(menu_num == 7) {
+            	
+            }
+            else if(menu_num == 8) {
+            	
+            }
+            else if(menu_num == 99) {
+            	break;
+            }
+            
+            /*
             //List Instance
             if(menu_num==1)
             {
-            	System.out.println("List Instance");
+            	System.out.println("ListInstance");
             	//ListInstance.listInstance(ec2);
             	
             }
-            /*
             //Availablezones
             else if(menu_num==2)
             {
@@ -115,13 +142,7 @@ public class Main {
             	
             }
             */
-            
-            //Quit
-            else if(menu_num==99)
-            {
-            	break;
-            }
-            
+                      
             
         }
         

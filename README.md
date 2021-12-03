@@ -1,2 +1,2 @@
 # cloudterm
-cbnu sotftware
+cbnu software

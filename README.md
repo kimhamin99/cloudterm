@@ -1,2 +1,3 @@
 # cloudterm
-cbnu software
+2021 cbnu software
+cloudcomputing term project

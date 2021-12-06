@@ -32,6 +32,8 @@ import com.amazonaws.services.ec2.model.UnmonitorInstancesRequest;
 import com.amazonaws.services.ec2.model.Region;
 import com.amazonaws.services.ec2.model.AvailabilityZone;
 import com.amazonaws.services.ec2.model.DescribeRegionsResult;
+import com.amazonaws.services.ec2.model.DeleteTagsRequest;
+import com.amazonaws.services.ec2.model.DeleteTagsResult;
 
 public class aws {
 /*
@@ -127,7 +129,7 @@ public class aws {
 				reboot(instance_id);
 				break;
 			case 8:
-				System.out.print("Enter an ownerid: ");
+				System.out.print("Enter an owner id: ");
 				ownerid = d.nextLine();
 				listImages(ownerid);
 				break;
@@ -200,7 +202,6 @@ public class aws {
 				        zone.getState(),
 				        zone.getRegionName());
 				}
-			System.out.println("Complete");
 		}//available zone
 		
 		//3. start 
@@ -239,13 +240,11 @@ public class aws {
 
 			for(Region region : regions_response.getRegions()) {
 			    System.out.printf(
-			        "Found region %s " +
-			        "with endpoint %s \n",
+			        "Found region %s " +  "with endpoint %s \n",
 			        region.getRegionName(),
 			        region.getEndpoint());
 			}
-			
-			System.out.println("Complete");		
+				
 		} //available regions
 
 		//5. stop 
@@ -288,7 +287,7 @@ public class aws {
 
 		        RunInstancesRequest run_request = new RunInstancesRequest()
 		            .withImageId(ami_id)
-		            .withInstanceType(InstanceType.T1Micro)
+		            .withInstanceType(InstanceType.T2Micro)
 		            .withMaxCount(1)
 		            .withMinCount(1);
 
@@ -333,14 +332,17 @@ public class aws {
 			
 			List<Image> images = response.getImages();
 			
-			if(ownerid != null && !ownerid.isEmpty()) {
+			
+			if(ownerid!= null && !ownerid.isEmpty()) {
 				request = request.withOwners(ownerid);
 			}
+			
 			  DescribeImagesResult result=ec2.describeImages(request);
-			  if (result != null) {
+			  if (ownerid != null) {
 			    images=result.getImages();
 			  }
-		    /*if (images.isEmpty()) {
+			  
+		    if (images.isEmpty()) {
 		    	System.out.println("Empty Image");  
 		    }
 		    else
@@ -349,7 +351,7 @@ public class aws {
 		    	
 		    	System.out.println(image.getImageId());
 		    }
-		    */
+		    
 						
 			System.out.println("Complete");
 			
@@ -418,4 +420,5 @@ public class aws {
 	        System.out.printf(
 	            "Successfully disabled monitoring for instance %s", instance_id);
 	    }//unmonitor
+		
 }//aws
